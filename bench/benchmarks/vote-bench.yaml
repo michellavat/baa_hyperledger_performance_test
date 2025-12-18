@@ -1,0 +1,55 @@
+test:
+  name: vote-load
+  description: "Vote tx benchmark with increasing TPS"
+  workers:
+    type: local
+    number: 2
+
+  rounds:
+    - label: Gemeinde klein
+      txNumber: 5000
+      rateControl:
+        type: fixed-rate
+        opts: { tps: 10 }
+      workload:
+        module: workloads/vote.js
+
+   - label: Gemeinde gross
+      txNumber: 50000
+      rateControl:
+        type: fixed-rate
+        opts: { tps: 50 }
+      workload:
+        module: workloads/vote.js
+
+    - label: Bezirk
+      txNumber: 150000
+      rateControl:
+        type: fixed-rate
+        opts: { tps: 150 }
+      workload:
+        module: workloads/vote.js
+
+    - label: Kanton klein
+      txNumber: 300000
+      rateControl:
+        type: fixed-rate
+        opts: { tps: 300 }
+      workload:
+        module: workloads/vote.js
+
+    - label: Kanton gross
+      txNumber: 1000000
+      rateControl:
+        type: fixed-rate
+        opts: { tps: 500 }
+      workload:
+        module: workloads/vote.js
+
+    - label: Bund
+      txNumber: 5000000
+      rateControl:
+        type: fixed-rate
+        opts: { tps: 600 }
+      workload:
+        module: workloads/vote.js
