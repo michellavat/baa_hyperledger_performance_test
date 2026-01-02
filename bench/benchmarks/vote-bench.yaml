@@ -1,39 +1,79 @@
 test:
   name: vote-load
-  description: "Performance Test BAA ML - Thrueput-Test"
+  description: "Performance Test BAA ML – Throughput-Test (Stimmberechtigte vs. TPS)"
   workers:
     type: local
     number: 2
 
   rounds:
-    - label: "Gemeinde klein"
-      txNumber: 5000
+    - label: "Gemeinde"
+      txNumber: 2632
       rateControl:
         type: fixed-rate
-        opts: { tps: 10 }
-      workload:
-        module: workloads/vote.js
-
-    - label: "Gemeinde gross"
-      txNumber: 50000
-      rateControl:
-        type: fixed-rate
-        opts: { tps: 50 }
+        opts:
+          tps: 1
       workload:
         module: workloads/vote.js
 
     - label: "Bezirk"
-      txNumber: 150000
+      txNumber: 39044
       rateControl:
         type: fixed-rate
-        opts: { tps: 150 }
+        opts:
+          tps: 3
       workload:
         module: workloads/vote.js
 
-    - label: "Kanton klein"
-      txNumber: 300000
+    - label: "Kanton"
+      txNumber: 214739
       rateControl:
         type: fixed-rate
-        opts: { tps: 300 }
+        opts:
+          tps: 13
+      workload:
+        module: workloads/vote.js
+
+    - label: "Luzern"
+      txNumber: 437944
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 26
+      workload:
+        module: workloads/vote.js
+
+    - label: "Aargau"
+      txNumber: 735808
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 43
+      workload:
+        module: workloads/vote.js
+
+    - label: "Bern"
+      txNumber: 1071216
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 62
+      workload:
+        module: workloads/vote.js
+
+    - label: "Zürich"
+      txNumber: 1620020
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 94
+      workload:
+        module: workloads/vote.js
+
+    - label: "Bundesweit"
+      txNumber: 5583221
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 324
       workload:
         module: workloads/vote.js
